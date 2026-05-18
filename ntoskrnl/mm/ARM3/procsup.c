@@ -966,7 +966,7 @@ MmInitializeProcessAddressSpace(IN PEPROCESS Process,
     ASSERT(Process->AddressSpaceInitialized <= 1);
     Process->AddressSpaceInitialized = 2;
 
-    /* Initialize the Addresss Space lock */
+    /* Initialize the Address Space lock */
     KeInitializeGuardedMutex(&Process->AddressCreationLock);
     Process->Vm.WorkingSetExpansionLinks.Flink = NULL;
 
@@ -976,7 +976,6 @@ MmInitializeProcessAddressSpace(IN PEPROCESS Process,
 
     /* Lock our working set */
     MiLockProcessWorkingSet(Process, PsGetCurrentThread());
-
     /* Lock PFN database */
     OldIrql = MiAcquirePfnLock();
 
